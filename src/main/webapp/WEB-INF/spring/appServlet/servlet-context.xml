@@ -27,12 +27,13 @@
 	</beans:bean>
 	
 	<!-- interceptor 설정 -->
-	<interceptors>
+ 	<interceptors>
 		<interceptor>
 			<mapping path="/board/**"/>
 			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/board/emp/**"/>
 			<beans:ref bean="boardInterceptor"/>
 		</interceptor>
-	</interceptors>	
+	</interceptors>	 
 	
 </beans:beans>

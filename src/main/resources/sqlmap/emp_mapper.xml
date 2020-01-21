@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.board.mapper.EmpMapper">
+
+	<resultMap id="DeptEmpMap" type="DeptEmpVO" >
+		<id property="deptno" column="deptno" />
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc" />
+		<!-- <association property="account" column="account_id" resultMap="accountMap" /> -->
+		<collection property="empList" ofType="EmpVO" />
+	</resultMap>
+
+	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpMap">
+	<![CDATA[
+		select  * from emp e ,dept d where e.deptno = d.deptno and d.deptno = #{deptno}	
+  	]]>
+	</select>
+	 
+	 <select id="selectAllEmpList" resultType="EmpVO" >
+	<![CDATA[
+		select * from emp	
+  	]]>
+	</select>
+
+</mapper>
+
