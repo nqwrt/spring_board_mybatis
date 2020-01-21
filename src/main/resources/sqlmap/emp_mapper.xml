@@ -18,8 +18,21 @@
 		<result property="loc" column="loc" />
 		<collection property="empList" javaType="java.util.ArrayList" resultMap="DeptEmpResultMap" />
 	</resultMap>
+	
+	<resultMap id="Emp" type="edu.bit.board.vo.EmpVO">
+	    <id property="empno" column="empno"/>
+	    <result property="ename" column="ename"/>
+	    <result property="job" column="job"/>
+	</resultMap>
 
-	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpMap">
+	<resultMap id="DeptEmpResult" type="edu.bit.board.vo.DeptEmpVO" >
+		<id property="deptno" column="deptno" />
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc" />
+		<collection property="empList" javaType="java.util.ArrayList" resultMap="Emp" />
+	</resultMap>
+
+	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpResult">
 	<![CDATA[
 		select  * from emp e ,dept d where e.deptno = d.deptno and d.deptno = #{deptno}	
   	]]>

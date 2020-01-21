@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.bit.board.service.EmpService;
+import edu.bit.board.vo.DeptEmpVO;
 
 @Controller
 @RequestMapping("/emp")
@@ -41,6 +42,10 @@ public class EmpController {
 		
 		System.out.println(empList.size());
 		
+		DeptEmpVO deptEmpVO =  empServie.selectEmpDeptName(10);
+		
+		System.out.println(deptEmpVO.getDeptno());
+		System.out.println(deptEmpVO.getEmpList().size()); 
 		
 		return "redirect:/";
 	}
