@@ -3,12 +3,20 @@
 
 <mapper namespace="edu.bit.board.mapper.EmpMapper">
 
-	<resultMap id="DeptEmpMap" type="DeptEmpVO" >
+	<!-- 1-N 해결 -->
+    <!-- https://noritersand.github.io/mybatis/2013/11/28/mybatis-1-n-%EA%B4%80%EA%B3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC-data-concatenation/
+ -->
+	<resultMap id="DeptEmpResultMap" type="java.util.HashMap">
+	    <id property="deptno" column="deptno"/>
+	    <result property="ename" column="ename"/>
+	    <result property="empno" column="empno"/>
+	</resultMap>
+
+	<resultMap id="DeptEmpMap" type="java.util.HashMap" >
 		<id property="deptno" column="deptno" />
 		<result property="dname" column="dname"/>
 		<result property="loc" column="loc" />
-		<!-- <association property="account" column="account_id" resultMap="accountMap" /> -->
-		<collection property="empList" ofType="EmpVO" />
+		<collection property="empList" javaType="java.util.ArrayList" resultMap="DeptEmpResultMap" />
 	</resultMap>
 
 	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpMap">
@@ -18,6 +26,12 @@
 	</select>
 	 
 	 <select id="selectAllEmpList" resultType="EmpVO" >
+	<![CDATA[
+		select * from emp	
+  	]]>
+	</select>
+	
+	<select id="selectAllEmpListHashMap" resultType="hashmap" >
 	<![CDATA[
 		select * from emp	
   	]]>

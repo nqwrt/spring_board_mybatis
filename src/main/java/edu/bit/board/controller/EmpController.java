@@ -1,6 +1,8 @@
 package edu.bit.board.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.bit.board.service.EmpService;
-import edu.bit.board.vo.EmpVO;
 
 @Controller
 @RequestMapping("/emp")
@@ -24,7 +25,19 @@ public class EmpController {
 		
 		System.out.println("emp");
 		
-		ArrayList<EmpVO> empList = empServie.selectAllEmpList();
+		//ArrayList<EmpVO> empList = empServie.selectAllEmpList();
+		
+		ArrayList<HashMap<String,Object>> empList = empServie.selectAllEmpListHashMap();
+		
+		for (HashMap<String, Object> hashMap : empList) {
+			
+			Iterator<String> keys = hashMap.keySet().iterator();
+			while( keys.hasNext() ){
+				String key = keys.next();
+				System.out.println( String.format("Å° : %s, °ª : %s", key, hashMap.get(key)) );
+			}
+		}
+		
 		
 		System.out.println(empList.size());
 		

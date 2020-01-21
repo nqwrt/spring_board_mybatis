@@ -1,6 +1,7 @@
 package edu.bit.board.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,10 @@ public class EmpService {
    public DeptEmpVO selectEmpDeptName(int deptno) {
 		return empMapper.selectEmpDeptName(deptno) ;
    }
+   
+	public ArrayList<HashMap<String,Object>> selectAllEmpListHashMap() {
+		return empMapper.selectAllEmpListHashMap() ;
+}
 
 
 }
