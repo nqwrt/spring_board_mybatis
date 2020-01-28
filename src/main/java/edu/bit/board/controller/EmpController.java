@@ -28,19 +28,19 @@ public class EmpController {
 		
 		//ArrayList<EmpVO> empList = empServie.selectAllEmpList();
 		
-		ArrayList<HashMap<String,Object>> empList = empServie.selectAllEmpListHashMap();
-		
-		for (HashMap<String, Object> hashMap : empList) {
-			
-			Iterator<String> keys = hashMap.keySet().iterator();
-			while( keys.hasNext() ){
-				String key = keys.next();
-				System.out.println( String.format("키 : %s, 값 : %s", key, hashMap.get(key)) );
-			}
-		}
-		
-		
-		System.out.println(empList.size());
+		/*
+		 * ArrayList<HashMap<String,Object>> empList =
+		 * empServie.selectAllEmpListHashMap();
+		 * 
+		 * for (HashMap<String, Object> hashMap : empList) {
+		 * 
+		 * Iterator<String> keys = hashMap.keySet().iterator(); while( keys.hasNext() ){
+		 * String key = keys.next(); System.out.println( String.format("키 : %s, 값 : %s",
+		 * key, hashMap.get(key)) ); } }
+		 * 
+		 * 
+		 * System.out.println(empList.size());
+		 */
 		
 		DeptEmpVO deptEmpVO =  empServie.selectEmpDeptName(10);
 		

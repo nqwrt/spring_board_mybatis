@@ -8,9 +8,10 @@
 			<typeAlias alias="DeptEmpVO" type="edu.bit.board.vo.DeptEmpVO" />
 	</typeAliases>
 	
-	<!-- <mappers>
-	        <mapper resource="resources/mappers/member-mapper.xml"/>
-	        <mapper resource="resources/mappers/board-mapper.xml"/>
-	</mappers> -->
+<!-- 	 <mappers>
+	        <mapper resource="resources/sqlmap/board_mapper.xml"/>
+	        <mapper resource="resources/sqlmap/board.xml"/>
+	        <mapper resource="resources/sqlmap/emp_mapper.xml"/>
+	</mappers>  -->
 </configuration>
 
